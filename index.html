@@ -28,6 +28,17 @@
     overflow-x: hidden;
   }
 
+  /* CSS-only entrance animations — no JS required */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .anim   { animation: fadeUp 0.7s ease both; }
+  .d1 { animation-delay: 0.15s; }
+  .d2 { animation-delay: 0.30s; }
+  .d3 { animation-delay: 0.45s; }
+  .d4 { animation-delay: 0.60s; }
+
   /* DISCLAIMER MODAL */
   .modal-overlay {
     position: fixed; inset: 0; z-index: 9999;
@@ -37,31 +48,22 @@
     backdrop-filter: blur(4px);
   }
   .modal {
-    background: #fff;
-    max-width: 680px; width: 100%;
-    border-radius: 2px;
-    padding: 3rem 3.5rem;
+    background: #fff; max-width: 680px; width: 100%;
+    border-radius: 2px; padding: 3rem 3.5rem;
     border-top: 4px solid var(--orange);
-    animation: modalIn 0.4s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+    animation: fadeUp 0.4s ease;
   }
   .modal h2 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem; font-weight: 600;
-    color: var(--navy); margin-bottom: 1.25rem;
-    letter-spacing: 0.02em;
+    color: var(--navy); margin-bottom: 1.25rem; letter-spacing: 0.02em;
   }
   .modal p { font-size: 0.88rem; color: #555; line-height: 1.75; margin-bottom: 1.75rem; }
   .modal-btn {
     background: var(--navy); color: #fff; border: none;
-    padding: 0.8rem 2.5rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; border-radius: 1px;
+    padding: 0.8rem 2.5rem; font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; cursor: pointer; border-radius: 1px;
     transition: background 0.25s;
   }
   .modal-btn:hover { background: var(--navy-dark); }
@@ -69,59 +71,46 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(250, 248, 245, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(250, 248, 245, 0.97); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    padding: 0 4%;
-    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 4%; display: flex; align-items: center; justify-content: space-between;
     height: 72px;
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { display: block; height: 44px; width: auto; object-fit: contain; mix-blend-mode: multiply; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
-    text-decoration: none; color: var(--text);
-    font-size: 0.82rem; letter-spacing: 0.1em;
-    text-transform: uppercase; font-weight: 500;
+    text-decoration: none; color: var(--text); font-size: 0.82rem;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
     transition: color 0.2s; position: relative;
   }
   .nav-links a::after {
-    content: ''; position: absolute;
-    bottom: -3px; left: 0; right: 0;
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
     height: 1.5px; background: var(--orange);
     transform: scaleX(0); transition: transform 0.25s;
   }
   .nav-links a:hover { color: var(--navy); }
   .nav-links a:hover::after { transform: scaleX(1); }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 
   /* HERO */
   .hero {
     min-height: 100vh; display: flex; align-items: center;
-    padding: 100px 8% 80px; position: relative; overflow: hidden;
+    padding: 100px 8% 80px;
   }
-  .hero::before {
-    content: '';
-    position: absolute; right: -5%; top: 10%;
-    width: 55%; height: 80%;
-    background: linear-gradient(135deg, rgba(29,81,137,0.04) 0%, rgba(232,119,34,0.05) 100%);
-    border-radius: 4px; transform: rotate(-2deg);
-  }
-  .hero-content { max-width: 680px; position: relative; }
+  .hero-content { max-width: 680px; }
   .hero-eyebrow {
-    font-size: 0.78rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--orange);
-    font-weight: 500; margin-bottom: 1.25rem;
+    font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange); font-weight: 500; margin-bottom: 1.25rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
   .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1.5px; background: var(--orange); }
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 300; line-height: 1.15;
-    color: var(--navy); margin-bottom: 1rem;
-    letter-spacing: -0.01em;
+    font-weight: 300; line-height: 1.15; color: var(--navy);
+    margin-bottom: 1rem; letter-spacing: -0.01em;
   }
-  .hero h1 em { font-style: italic; font-weight: 400; color: var(--navy-dark); }
   .hero-sub {
     font-size: 1.05rem; color: var(--text-muted);
     max-width: 480px; margin-bottom: 2.5rem; font-weight: 300;
@@ -129,153 +118,122 @@
   .hero-cta {
     display: inline-flex; align-items: center; gap: 0.75rem;
     background: var(--navy); color: #fff; text-decoration: none;
-    padding: 0.95rem 2.25rem;
-    font-size: 0.82rem; font-weight: 500;
+    padding: 0.95rem 2.25rem; font-size: 0.82rem; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase;
     transition: background 0.25s, transform 0.2s; border-radius: 1px;
   }
   .hero-cta:hover { background: var(--navy-dark); transform: translateY(-1px); }
   .hero-cta svg { transition: transform 0.2s; }
   .hero-cta:hover svg { transform: translateX(3px); }
-  .hero-vertical {
-    position: absolute; right: 8%; top: 50%;
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: center center;
-    font-size: 0.7rem; letter-spacing: 0.35em;
-    text-transform: uppercase; color: var(--border);
-    white-space: nowrap;
-  }
 
-  /* SECTION SHARED */
+  /* SHARED SECTION */
   section { padding: 100px 8%; }
   .section-label {
-    font-size: 0.72rem; letter-spacing: 0.25em;
-    text-transform: uppercase; color: var(--orange);
-    font-weight: 500; margin-bottom: 0.75rem;
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--orange); font-weight: 500; margin-bottom: 0.75rem;
     display: flex; align-items: center; gap: 0.6rem;
   }
   .section-label::before { content: ''; width: 24px; height: 1.5px; background: var(--orange); }
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300; color: var(--navy); line-height: 1.2;
-    margin-bottom: 1.5rem;
+    font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem;
   }
 
   /* SERVICES */
   #services { background: #fff; }
   .services-intro {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-    align-items: end; margin-bottom: 4rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: end; margin-bottom: 4rem;
   }
   .services-intro p { font-size: 1rem; color: var(--text-muted); font-weight: 300; max-width: 400px; }
+
   .services-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1px; background: var(--border); border: 1px solid var(--border);
   }
-  @media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .services-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 1024px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
+
   .service-card {
-    background: #fff; padding: 2.5rem 2rem;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s; cursor: default; min-height: 300px;
+    padding: 2.5rem 2rem; min-height: 300px;
     display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative; transition: transform 0.3s;
   }
-  .service-card .card-bg {
-    position: absolute; inset: 0;
-    background-size: cover; background-position: center;
-    filter: blur(0px) brightness(0.55) saturate(0.8);
-    transform: scale(1.08);
-    transition: filter 0.45s ease, transform 0.45s ease; z-index: 0;
-  }
-  .service-card:hover .card-bg { filter: blur(0px) brightness(0.42) saturate(0.7); transform: scale(1.04); }
+  .service-card:hover { transform: translateY(-2px); }
   .service-card::after {
-    content: ''; position: absolute;
-    bottom: 0; left: 0; right: 0; height: 3px;
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--orange), var(--green));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.35s ease; z-index: 2;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
   }
   .service-card:hover::after { transform: scaleX(1); }
-  .service-card:hover { transform: translateY(-2px); }
-  .service-card > *:not(.card-bg) { position: relative; z-index: 1; }
   .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem; font-weight: 300;
-    color: rgba(255,255,255,0.25); line-height: 1; margin-bottom: 1rem;
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem;
+    font-weight: 300; color: rgba(255,255,255,0.28); line-height: 1; margin-bottom: 1rem;
   }
-  .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
-  .service-card p { font-size: 0.875rem; color: rgba(255,255,255,0.78); font-weight: 300; line-height: 1.65; }
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+    font-weight: 600; color: #fff; margin-bottom: 0.5rem;
+  }
+  .service-card p { font-size: 0.875rem; color: rgba(255,255,255,0.82); font-weight: 300; line-height: 1.65; }
+
+  .sc-1 { background: linear-gradient(145deg, #4a7fb5, #2d6099); }
+  .sc-2 { background: linear-gradient(145deg, #3d7a5e, #4e9b73); }
+  .sc-3 { background: linear-gradient(145deg, #2e6e8e, #1e5570); }
+  .sc-4 { background: linear-gradient(145deg, #5588b8, #3a6fa0); }
+  .sc-5 { background: linear-gradient(145deg, #3d9464, #52b87e); }
+  .sc-6 { background: linear-gradient(145deg, #b07040, #c98848); }
 
   /* ABOUT */
   #about { background: var(--cream); }
   .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
   .about-visual {
-    aspect-ratio: 4/5; max-height: 560px;
-    border-radius: 2px; position: relative;
-    overflow: hidden;
+    aspect-ratio: 4/5; max-height: 560px; border-radius: 2px;
+    position: relative; overflow: hidden;
     box-shadow: 0 20px 60px rgba(29,81,137,0.15);
   }
   .about-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .about-visual::after {
-    content: ''; position: absolute;
-    inset: -12px; border: 1px solid var(--border);
-    border-radius: 2px; pointer-events: none;
+    content: ''; position: absolute; inset: -12px;
+    border: 1px solid var(--border); border-radius: 2px; pointer-events: none;
   }
   .about-text p { font-size: 0.95rem; color: #555; line-height: 1.85; font-weight: 300; margin-bottom: 1rem; }
   .disclaimer-box {
     margin-top: 2rem; padding: 1.5rem;
-    border-left: 3px solid var(--orange);
-    background: rgba(232,119,34,0.04);
+    border-left: 3px solid var(--orange); background: rgba(232,119,34,0.04);
     border-radius: 0 2px 2px 0;
   }
   .disclaimer-box p { font-size: 0.8rem; color: #777; line-height: 1.75; margin: 0; }
 
-  /* MERGED CONTACT */
-  .contact-merged {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-top: 0;
-    align-items: start;
+  /* INDUSTRIES */
+  #industries { background: var(--cream); padding: 80px 8%; }
+  .industries-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
+  .industry-tag {
+    font-size: 0.78rem; letter-spacing: 0.06em; font-weight: 400; color: var(--navy);
+    border: 1px solid var(--border); padding: 0.45rem 1rem; border-radius: 1px; background: #fff;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
-  .contact-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem 3rem;
-  }
-  .contact-map {
-    border-radius: 2px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  }
-  .contact-map iframe {
-    display: block; width: 100%; height: 320px; border: none;
-  }
-  @media (max-width: 900px) {
-    .contact-merged { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-info-grid { grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 560px) {
-    .contact-info-grid { grid-template-columns: 1fr; }
-  }
+  .industry-tag:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
 
   /* CONTACT */
   #contact { background: var(--navy); color: #fff; }
   #contact .section-label { color: var(--orange); }
   #contact .section-label::before { background: var(--orange); }
   #contact .section-title { color: #fff; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; margin-top: 3rem; }
-  .contact-item { display: flex; flex-direction: column; gap: 0.3rem; }
-  .contact-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; }
-  .contact-value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 300; color: #fff; }
+  .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 2.5rem 0; }
+  .contact-merged { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; }
+  .contact-item { display: flex; flex-direction: column; gap: 0.35rem; }
+  .contact-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.45); font-weight: 500;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .contact-value { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: #fff; }
   .contact-value a { color: #fff; text-decoration: none; transition: color 0.2s; }
   .contact-value a:hover { color: var(--orange); }
-  .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 2.5rem 0; }
+  .contact-map { border-radius: 2px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .contact-map iframe { display: block; width: 100%; height: 320px; border: none; }
 
   /* FOOTER */
   footer {
@@ -283,44 +241,7 @@
     display: flex; align-items: center; justify-content: space-between;
     font-size: 0.78rem; color: rgba(255,255,255,0.35); letter-spacing: 0.05em;
   }
-  .footer-logo {
-    height: 38px; width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.85;
-  }
-
-  /* HAMBURGER */
-  .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-
-  /* FADE IN */
-  .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fade-in.visible { opacity: 1; transform: none; }
-
-  .contact-label svg, .location-label svg {
-    color: var(--orange);
-    stroke: var(--orange);
-    opacity: 1 !important;
-  }
-  #contact .contact-label svg {
-    stroke: rgba(255,255,255,0.5);
-  }
-
-  /* INDUSTRIES */
-  #industries { background: var(--cream); padding: 80px 8%; }
-  .industries-tags {
-    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem;
-  }
-  .industry-tag {
-    font-size: 0.78rem; letter-spacing: 0.06em;
-    font-weight: 400; color: var(--navy);
-    border: 1px solid var(--border);
-    padding: 0.45rem 1rem; border-radius: 1px;
-    background: #fff;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .industry-tag:hover {
-    background: var(--navy); color: #fff; border-color: var(--navy);
-  }
+  .footer-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
@@ -329,11 +250,11 @@
     .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .about-layout { grid-template-columns: 1fr; gap: 3rem; }
     .about-visual { aspect-ratio: 3/4; max-height: 420px; }
-    .location-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .contact-merged { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-info-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 0.75rem; text-align: center; }
-    .hero-vertical { display: none; }
   }
+  @media (max-width: 560px) { .contact-info-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -351,10 +272,7 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img
-      src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo.png"
-      alt="CA India Logo"
-    >
+    <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo.png" alt="CA India Logo">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -374,61 +292,54 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-content">
-    <div class="hero-eyebrow">Chartered Accountant</div>
-    <h1>CA Vasu<br>Gupta</h1>
-    <p class="hero-sub">Vasu Gupta and Company &mdash; bringing clarity, integrity, and expert financial counsel to businesses and individuals.</p>
-    <a href="#contact" class="hero-cta">
+    <div class="hero-eyebrow anim d1">Chartered Accountant</div>
+    <h1 class="anim d2">CA Vasu<br>Gupta</h1>
+    <p class="hero-sub anim d3">Vasu Gupta and Company &mdash; bringing clarity, integrity, and expert financial counsel to businesses and individuals.</p>
+    <a href="#contact" class="hero-cta anim d4">
       Get in Touch
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </a>
   </div>
-  <div class="hero-vertical">Vasu Gupta &amp; Company &mdash; Chartered Accountants</div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
   <div class="services-intro">
     <div>
-      <div class="section-label fade-in">What We Do</div>
-      <h2 class="section-title fade-in">Services<br><em style="font-style:italic;font-family:'Cormorant Garamond',serif">We Offer</em></h2>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Services<br><em style="font-style:italic;font-family:'Cormorant Garamond',serif">We Offer</em></h2>
     </div>
-    <p class="fade-in" style="align-self:end">From audit to advisory, we integrate deep functional expertise with practical execution to help clients build lasting capability and performance.</p>
+    <p>From audit to advisory, we integrate deep functional expertise with practical execution to help clients build lasting capability and performance.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#4a7fb5 0%,#2d6099 100%)"></div>
+    <div class="service-card sc-1">
       <div class="service-num">01</div>
       <h3>Audit &amp; Assurance</h3>
       <p>In-depth review of systems, procedures, and controls. Ensuring compliance, detecting income leakages, and reporting inefficiencies at every operational level.</p>
     </div>
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#3d7a5e 0%,#4e9b73 100%)"></div>
+    <div class="service-card sc-2">
       <div class="service-num">02</div>
       <h3>Taxation</h3>
       <p>Expert advice on Direct &amp; Indirect Tax for individuals, corporates, and other entities. Tax audit, representation before authorities, and complex corporate tax solutions.</p>
     </div>
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#2e6e8e 0%,#1e5570 100%)"></div>
+    <div class="service-card sc-3">
       <div class="service-num">03</div>
       <h3>Forensic &amp; Fraud Detection</h3>
       <p>Assignments conducted with integrity by a team certified by ICAI in forensic and fraud detection. A holistic approach to identifying and mitigating risk-prone areas.</p>
     </div>
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#5588b8 0%,#3a6fa0 100%)"></div>
+    <div class="service-card sc-4">
       <div class="service-num">04</div>
       <h3>Financial Advisory</h3>
       <p>Cash flow planning, operational audits, break-even analysis, valuations, forecasts, and identifying financing alternatives to support informed business decisions.</p>
     </div>
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#3d9464 0%,#52b87e 100%)"></div>
+    <div class="service-card sc-5">
       <div class="service-num">05</div>
       <h3>Startup Incubation</h3>
       <p>Supporting MSME and Startup creation across North &amp; Central India — from ideation and handholding to funding, across Technology, Healthcare, F&amp;B, Agro-tech and more.</p>
     </div>
-    <div class="service-card fade-in">
-      <div class="card-bg" style="background:linear-gradient(135deg,#b07040 0%,#c98848 100%)"></div>
+    <div class="service-card sc-6">
       <div class="service-num">06</div>
       <h3>Bank Finance &amp; Govt. Schemes</h3>
       <p>Helping businesses access the right financing at the right time, and keeping clients informed of relevant government-funded schemes and subsidies.</p>
@@ -439,10 +350,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-layout">
-    <div class="about-visual fade-in">
+    <div class="about-visual">
       <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo_3.jpg" alt="CA Vasu Gupta">
     </div>
-    <div class="about-text fade-in">
+    <div class="about-text">
       <div class="section-label">About</div>
       <h2 class="section-title">Vasu Gupta &amp; Company</h2>
       <p>We are a Chartered Accountancy firm committed to delivering professional, ethical, and personalised financial services. Founded on the principles of integrity and technical excellence, we serve clients across diverse sectors with precision and care.</p>
@@ -456,9 +367,9 @@
 
 <!-- INDUSTRIES -->
 <section id="industries">
-  <div class="section-label fade-in">Sectors</div>
-  <h2 class="section-title fade-in">Industries <em style="font-style:italic;font-family:'Cormorant Garamond',serif">We Serve</em></h2>
-  <div class="industries-tags fade-in">
+  <div class="section-label">Sectors</div>
+  <h2 class="section-title">Industries <em style="font-style:italic;font-family:'Cormorant Garamond',serif">We Serve</em></h2>
+  <div class="industries-tags">
     <span class="industry-tag">Advanced Electronics</span>
     <span class="industry-tag">Automotive &amp; Assembly</span>
     <span class="industry-tag">Chemicals</span>
@@ -487,33 +398,43 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-label">Get In Touch</div>
-  <h2 class="section-title fade-in">Contact Us</h2>
+  <h2 class="section-title">Contact Us</h2>
   <hr class="contact-divider">
-  <div class="contact-merged fade-in">
+  <div class="contact-merged">
     <div class="contact-info-grid">
       <div class="contact-item">
-        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Phone</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Phone
+        </span>
         <span class="contact-value"><a href="tel:+919450174288">+91 94501 74288</a></span>
       </div>
       <div class="contact-item">
-        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>Email</span>
-        <span class="contact-value"><a href="/cdn-cgi/l/email-protection#751614031406001200050114350c141d1a1a5b161a18"><span class="__cf_email__" data-cfemail="345755425547415341444055744d555c5b5b1a575b59">[email&#160;protected]</span></a></span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Email
+        </span>
+        <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
       </div>
       <div class="contact-item">
-        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </span>
         <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">linkedin.com/in/cavasugupta</a></span>
       </div>
       <div class="contact-item">
-        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Office Address</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Office Address
+        </span>
         <span class="contact-value" style="font-size:1rem;line-height:1.65">H-1106, Shalimar Gallant<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006, India</span>
       </div>
     </div>
     <div class="contact-map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.5234456!2d80.94619!3d26.87419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd46b73e4c67%3A0xd58b7c3e2f8b1a9d!2sShalimar+Gallant%2C+Mahanagar%2C+Lucknow%2C+Uttar+Pradesh+226006!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         title="Office Location — Mahanagar, Lucknow">
       </iframe>
     </div>
@@ -522,27 +443,20 @@
 
 <!-- FOOTER -->
 <footer>
-  <img
-    src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo.png"
-    alt="CA India Logo"
-    class="footer-logo"
-  >
+  <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo.png" alt="CA India Logo" class="footer-logo">
   <span>&copy; 2025 Vasu Gupta &amp; Company. All rights reserved.</span>
   <span>Chartered Accountants &mdash; Lucknow, India</span>
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Fallback: show all hidden elements after 1.2s in case observer doesn't fire
-  setTimeout(() => {
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => el.classList.add('visible'));
-  }, 1200);
-
   function toggleMobileMenu() {
     const nav = document.querySelector('.nav-links');
-    const isOpen = nav.style.display === 'flex';
-    nav.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(250,248,245,0.98);padding:1.5rem 8%;gap:1.25rem;border-bottom:1px solid rgba(29,81,137,0.
+    const open = nav.style.display === 'flex';
+    nav.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(250,248,245,0.98);padding:1.5rem 8%;gap:1.25rem;border-bottom:1px solid rgba(29,81,137,0.12);z-index:99;';
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth < 768) document.querySelector('.nav-links').style.cssText = '';
+  }));
+</script>
+</body>
+</html>
