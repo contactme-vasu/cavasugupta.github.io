@@ -76,7 +76,7 @@
     display: flex; align-items: center; justify-content: space-between;
     height: 72px;
   }
-  .nav-logo img { height: 42px; width: auto; display: block; }
+  .nav-logo svg { display: block; } .nav-logo { display:flex; align-items:center; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
     text-decoration: none; color: var(--text);
@@ -284,7 +284,7 @@
     display: flex; align-items: center; justify-content: space-between;
     font-size: 0.78rem; color: rgba(255,255,255,0.35); letter-spacing: 0.05em;
   }
-  footer img { height: 28px; opacity: 0.5; filter: brightness(0) invert(1); }
+  footer img { height: 36px; opacity: 0.9; }
 
   /* HAMBURGER */
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
@@ -348,7 +348,15 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNTIiIGhlaWdodD0iNDQiPgogIDwhLS0gQ0EgdGV4dCAtLT4KICA8dGV4dCB4PSI0IiB5PSIzNCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxRDNBOEEiIGxldHRlci1zcGFjaW5nPSItMSI+Q0E8L3RleHQ+CiAgPCEtLSB2ZXJ0aWNhbCBkaXZpZGVyIC0tPgogIDxsaW5lIHgxPSI4MiIgeTE9IjQiIHgyPSI4MiIgeTI9IjQ4IiBzdHJva2U9IiMxRDNBOEEiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjMiLz4KICA8IS0tIFRyaWNvbG9yIGludmVydGVkIGNoZWNrbWFyayAodGljayBwb2ludGluZyBkb3duKSAtLT4KICA8IS0tIFNhZmZyb24gc2VnbWVudCAtLT4KICA8cG9seWxpbmUgcG9pbnRzPSI5MCwxMCAxMTAsMzIgMTMwLDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRjk5MzMiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPCEtLSBXaGl0ZSBzZWdtZW50IC0tPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDE4IDExMCw0MCAxMzAsMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8IS0tIEdyZWVuIHNlZ21lbnQgLS0+CiAgPHBvbHlsaW5lIHBvaW50cz0iOTAsMjYgMTEwLDQ4IDEzMCwyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTI4ODA3IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDwhLS0gImluZGlhIiB0ZXh0IC0tPgogIDx0ZXh0IHg9Ijg0IiB5PSIxMyIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzFEM0E4QSIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtd2VpZ2h0PSI0MDAiPklORElBPC90ZXh0Pgo8L3N2Zz4=" alt="CA India Logo" style="height:44px;width:auto">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 48" height="40" style="display:block">
+  <text x="0" y="36" font-family="Georgia,serif" font-size="38" font-weight="700" fill="#1D3A8A" letter-spacing="-1">CA</text>
+  <line x1="84" y1="6" x2="84" y2="44" stroke="#1D3A8A" stroke-width="1.2" opacity="0.25"/>
+  <text x="88" y="17" font-family="Arial,sans-serif" font-size="8.5" fill="#1D3A8A" letter-spacing="3" font-weight="500">INDIA</text>
+  <polyline points="90,22 106,40 122,22" fill="none" stroke="#FF6600" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,30 106,48 122,30" fill="none" stroke="#dddddd" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,38 106,56 122,38" fill="none" stroke="#138808" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="88" y1="44" x2="166" y2="44" stroke="#E87722" stroke-width="1.5"/>
+</svg>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -518,7 +526,15 @@
 
 <!-- FOOTER -->
 <footer>
-  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNTIiIGhlaWdodD0iMzYiPgogIDx0ZXh0IHg9IjQiIHk9IjM0IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIzNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0xIj5DQTwvdGV4dD4KICA8bGluZSB4MT0iODIiIHkxPSI0IiB4Mj0iODIiIHkyPSI0OCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPHBvbHlsaW5lIHBvaW50cz0iOTAsMTAgMTEwLDMyIDEzMCwxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY5OTMzIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDE4IDExMCw0MCAxMzAsMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuNiIvPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDI2IDExMCw0OCAxMzAsMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEyODgwNyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8dGV4dCB4PSI4NCIgeT0iMTMiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSIyIiBvcGFjaXR5PSIwLjgiPklORElBPC90ZXh0Pgo8L3N2Zz4=" alt="CA India Logo" style="height:36px;width:auto;opacity:0.85">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 48" height="34" style="display:block">
+  <text x="0" y="36" font-family="Georgia,serif" font-size="38" font-weight="700" fill="#ffffff" letter-spacing="-1">CA</text>
+  <line x1="84" y1="6" x2="84" y2="44" stroke="#ffffff" stroke-width="1.2" opacity="0.3"/>
+  <text x="88" y="17" font-family="Arial,sans-serif" font-size="8.5" fill="#ffffff" letter-spacing="3" font-weight="500" opacity="0.8">INDIA</text>
+  <polyline points="90,22 106,40 122,22" fill="none" stroke="#FF9933" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,30 106,48 122,30" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="90,38 106,56 122,38" fill="none" stroke="#138808" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="88" y1="44" x2="166" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+</svg>
   <span>&copy; 2025 Vasu Gupta &amp; Company. All rights reserved.</span>
   <span>Chartered Accountants &mdash; Lucknow, India</span>
 </footer>
