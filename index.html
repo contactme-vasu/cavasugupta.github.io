@@ -234,22 +234,36 @@
   }
   .disclaimer-box p { font-size: 0.8rem; color: #777; line-height: 1.75; margin: 0; }
 
-  /* LOCATION */
-  #location { background: #fff; }
-  .location-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .location-details { display: flex; flex-direction: column; gap: 1.5rem; }
-  .location-item { display: flex; flex-direction: column; gap: 0.35rem; }
-  .location-label {
-    font-size: 0.72rem; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--orange); font-weight: 500;
+
+  /* MERGED CONTACT */
+  .contact-merged {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 0;
+    align-items: start;
   }
-  .location-value { font-size: 1rem; color: var(--text); line-height: 1.6; }
-  .location-map {
-    border-radius: 2px; overflow: hidden;
-    box-shadow: 0 8px 32px rgba(29,81,137,0.10);
-    border: 1px solid var(--border);
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
   }
-  .location-map iframe { display: block; width: 100%; height: 360px; border: none; }
+  .contact-map {
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .contact-map iframe {
+    display: block; width: 100%; height: 320px; border: none;
+  }
+  @media (max-width: 900px) {
+    .contact-merged { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-info-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .contact-info-grid { grid-template-columns: 1fr; }
+  }
+
 
   /* CONTACT */
   #contact { background: var(--navy); color: #fff; }
@@ -334,13 +348,12 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDIiIGhlaWdodD0iNDIiPgogIDx0ZXh0IHg9IjIiIHk9IjI4IiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMUQ1MTg5Ij5DQTwvdGV4dD4KICA8dGV4dCB4PSIzNiIgeT0iMjgiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMUQ1MTg5Ij5JTkRJQTwvdGV4dD4KICA8bGluZSB4MT0iMiIgeTE9IjM0IiB4Mj0iMTE4IiB5Mj0iMzQiIHN0cm9rZT0iI0U4NzcyMiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg==" alt="CA India Logo">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNTIiIGhlaWdodD0iNDQiPgogIDwhLS0gQ0EgdGV4dCAtLT4KICA8dGV4dCB4PSI0IiB5PSIzNCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiMxRDNBOEEiIGxldHRlci1zcGFjaW5nPSItMSI+Q0E8L3RleHQ+CiAgPCEtLSB2ZXJ0aWNhbCBkaXZpZGVyIC0tPgogIDxsaW5lIHgxPSI4MiIgeTE9IjQiIHgyPSI4MiIgeTI9IjQ4IiBzdHJva2U9IiMxRDNBOEEiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjMiLz4KICA8IS0tIFRyaWNvbG9yIGludmVydGVkIGNoZWNrbWFyayAodGljayBwb2ludGluZyBkb3duKSAtLT4KICA8IS0tIFNhZmZyb24gc2VnbWVudCAtLT4KICA8cG9seWxpbmUgcG9pbnRzPSI5MCwxMCAxMTAsMzIgMTMwLDEwIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRjk5MzMiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPCEtLSBXaGl0ZSBzZWdtZW50IC0tPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDE4IDExMCw0MCAxMzAsMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8IS0tIEdyZWVuIHNlZ21lbnQgLS0+CiAgPHBvbHlsaW5lIHBvaW50cz0iOTAsMjYgMTEwLDQ4IDEzMCwyNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTI4ODA3IiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDwhLS0gImluZGlhIiB0ZXh0IC0tPgogIDx0ZXh0IHg9Ijg0IiB5PSIxMyIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZmlsbD0iIzFEM0E4QSIgbGV0dGVyLXNwYWNpbmc9IjIiIGZvbnQtd2VpZ2h0PSI0MDAiPklORElBPC90ZXh0Pgo8L3N2Zz4=" alt="CA India Logo" style="height:44px;width:auto">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#industries">Industries</a></li>
-    <li><a href="#location">Location</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
@@ -379,37 +392,37 @@
   </div>
   <div class="services-grid">
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMUQ1MTg5Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMTUzZDY4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">01</div>
       <h3>Audit &amp; Assurance</h3>
       <p>In-depth review of systems, procedures, and controls. Ensuring compliance, detecting income leakages, and reporting inefficiencies at every operational level.</p>
     </div>
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1586282391129-76a6df230234?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMTUzZDY4Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmE2ZjQwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">02</div>
       <h3>Taxation</h3>
       <p>Expert advice on Direct &amp; Indirect Tax for individuals, corporates, and other entities. Tax audit, representation before authorities, and complex corporate tax solutions.</p>
     </div>
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWEzYTVjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGQyYjQwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">03</div>
       <h3>Forensic &amp; Fraud Detection</h3>
       <p>Assignments conducted with integrity by a team certified by ICAI in forensic and fraud detection. A holistic approach to identifying and mitigating risk-prone areas.</p>
     </div>
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMmE1YzhhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMUQ1MTg5Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">04</div>
       <h3>Financial Advisory</h3>
       <p>Cash flow planning, operational audits, break-even analysis, valuations, forecasts, and identifying financing alternatives to support informed business decisions.</p>
     </div>
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMWU1YzNhIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMmE3YTUwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">05</div>
       <h3>Startup Incubation</h3>
       <p>Supporting MSME and Startup creation across North &amp; Central India — from ideation and handholding to funding, across Technology, Healthcare, F&amp;B, Agro-tech and more.</p>
     </div>
     <div class="service-card fade-in">
-      <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80')"></div>
+      <div class="card-bg" style="background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjN2E0YTFlIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjNWMzNjE1Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MDAiIGZpbGw9InVybCgjZykiLz48L3N2Zz4=')"></div>
       <div class="service-num">06</div>
       <h3>Bank Finance &amp; Govt. Schemes</h3>
       <p>Helping businesses access the right financing at the right time, and keeping clients informed of relevant government-funded schemes and subsidies.</p>
@@ -465,22 +478,31 @@
   </div>
 </section>
 
-<!-- LOCATION -->
-<section id="location">
-  <div class="section-label fade-in">Find Us</div>
-  <h2 class="section-title fade-in">Our <em style="font-style:italic;font-family:'Cormorant Garamond',serif">Location</em></h2>
-  <div class="location-layout" style="margin-top:3rem;">
-    <div class="location-details fade-in">
-      <div class="location-item">
-        <span class="location-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Office Address
-        </span>
-        <span class="location-value">H-1106, Shalimar Gallant<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006, India</span>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title fade-in">Contact Us</h2>
+  <hr class="contact-divider">
+  <div class="contact-merged fade-in">
+    <div class="contact-info-grid">
+      <div class="contact-item">
+        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Phone</span>
+        <span class="contact-value"><a href="tel:+919450174288">+91 94501 74288</a></span>
       </div>
-
+      <div class="contact-item">
+        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>Email</span>
+        <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</span>
+        <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">linkedin.com/in/cavasugupta</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Office Address</span>
+        <span class="contact-value" style="font-size:1rem;line-height:1.65">H-1106, Shalimar Gallant<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006, India</span>
+      </div>
     </div>
-    <div class="location-map fade-in">
+    <div class="contact-map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.5234456!2d80.94619!3d26.87419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd46b73e4c67%3A0xd58b7c3e2f8b1a9d!2sShalimar+Gallant%2C+Mahanagar%2C+Lucknow%2C+Uttar+Pradesh+226006!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
         allowfullscreen=""
@@ -492,50 +514,11 @@
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Get In Touch</div>
-  <h2 class="section-title fade-in">Contact Us</h2>
-  <hr class="contact-divider">
-  <div class="contact-grid">
-    <div>
-      <div class="contact-item fade-in" style="margin-bottom:2rem">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Phone
-        </span>
-        <span class="contact-value"><a href="tel:+919450174288">+91 94501 74288</a></span>
-      </div>
-      <div class="contact-item fade-in">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-          Email
-        </span>
-        <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
-      </div>
-    </div>
-    <div>
-      <div class="contact-item fade-in" style="margin-bottom:2rem">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </span>
-        <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">linkedin.com/in/cavasugupta</a></span>
-      </div>
-      <div class="contact-item fade-in">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Location
-        </span>
-        <span class="contact-value" style="font-size:1rem;line-height:1.6"><a href="#location" style="color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);">View on map &rarr;</a></span>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer>
-  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgNDIiIGhlaWdodD0iNDIiPgogIDx0ZXh0IHg9IjIiIHk9IjI4IiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMUQ1MTg5Ij5DQTwvdGV4dD4KICA8dGV4dCB4PSIzNiIgeT0iMjgiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmaWxsPSIjMUQ1MTg5Ij5JTkRJQTwvdGV4dD4KICA8bGluZSB4MT0iMiIgeTE9IjM0IiB4Mj0iMTE4IiB5Mj0iMzQiIHN0cm9rZT0iI0U4NzcyMiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg==2" alt="CA India Logo">
+  <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNjAgNTIiIGhlaWdodD0iMzYiPgogIDx0ZXh0IHg9IjQiIHk9IjM0IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSIzNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI2ZmZmZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0xIj5DQTwvdGV4dD4KICA8bGluZSB4MT0iODIiIHkxPSI0IiB4Mj0iODIiIHkyPSI0OCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIgb3BhY2l0eT0iMC4zIi8+CiAgPHBvbHlsaW5lIHBvaW50cz0iOTAsMTAgMTEwLDMyIDEzMCwxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkY5OTMzIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDE4IDExMCw0MCAxMzAsMTgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIG9wYWNpdHk9IjAuNiIvPgogIDxwb2x5bGluZSBwb2ludHM9IjkwLDI2IDExMCw0OCAxMzAsMjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzEyODgwNyIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8dGV4dCB4PSI4NCIgeT0iMTMiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjkiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSIyIiBvcGFjaXR5PSIwLjgiPklORElBPC90ZXh0Pgo8L3N2Zz4=" alt="CA India Logo" style="height:36px;width:auto;opacity:0.85">
   <span>&copy; 2025 Vasu Gupta &amp; Company. All rights reserved.</span>
   <span>Chartered Accountants &mdash; Lucknow, India</span>
 </footer>
