@@ -273,6 +273,15 @@
   .fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
 
+
+  .contact-label svg, .location-label svg {
+    color: var(--orange);
+    stroke: var(--orange);
+    opacity: 1 !important;
+  }
+  #contact .contact-label svg {
+    stroke: rgba(255,255,255,0.5);
+  }
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
@@ -323,7 +332,7 @@
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-eyebrow">Chartered Accountant</div>
-    <h1>CA <em>Vasu</em><br>Gupta</h1>
+    <h1>CA Vasu<br>Gupta</h1>
     <p class="hero-sub">Vasu Gupta and Company &mdash; bringing clarity, integrity, and expert financial counsel to businesses and individuals.</p>
     <a href="#contact" class="hero-cta">
       Get in Touch
@@ -380,7 +389,7 @@
     </div>
     <div class="about-text fade-in">
       <div class="section-label">About</div>
-      <h2 class="section-title">Vasu Gupta<br>&amp; Company</h2>
+      <h2 class="section-title">Vasu Gupta &amp; Company</h2>
       <p>We are a Chartered Accountancy firm committed to delivering professional, ethical, and personalised financial services. Founded on the principles of integrity and technical excellence, we serve clients across diverse sectors with precision and care.</p>
       <p>As members of the Institute of Chartered Accountants of India (ICAI), we uphold the highest standards of professional conduct in every engagement.</p>
       <div class="disclaimer-box">
@@ -397,25 +406,30 @@
   <div class="location-layout" style="margin-top:3rem;">
     <div class="location-details fade-in">
       <div class="location-item">
-        <span class="location-label">Office Address</span>
-        <span class="location-value">H-1106, Shalimar Gallant<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006<br>India</span>
+        <span class="location-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Office Address
+        </span>
+        <span class="location-value">H-1106, Shalimar Gallant<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006, India</span>
       </div>
       <div class="location-item">
-        <span class="location-label">Nearest Landmark</span>
-        <span class="location-value">Mahanagar, Lucknow</span>
-      </div>
-      <div class="location-item">
-        <span class="location-label">Phone</span>
+        <span class="location-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Phone
+        </span>
         <span class="location-value"><a href="tel:+919450174288" style="color:var(--navy);text-decoration:none;">+91 94501 74288</a></span>
       </div>
       <div class="location-item">
-        <span class="location-label">Email</span>
+        <span class="location-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:4px"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Email
+        </span>
         <span class="location-value"><a href="mailto:cavasugupta@yahoo.com" style="color:var(--navy);text-decoration:none;">cavasugupta@yahoo.com</a></span>
       </div>
     </div>
     <div class="location-map fade-in">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.7!2d80.9462!3d26.8742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd46b73e4c67%3A0x1a7a6e0c2f9b8b0c!2sMahanagar%2C%20Lucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1000000000000!5m2!1sen!2sin"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.5234456!2d80.94619!3d26.87419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd46b73e4c67%3A0xd58b7c3e2f8b1a9d!2sShalimar+Gallant%2C+Mahanagar%2C+Lucknow%2C+Uttar+Pradesh+226006!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
@@ -433,21 +447,33 @@
   <div class="contact-grid">
     <div>
       <div class="contact-item fade-in" style="margin-bottom:2rem">
-        <span class="contact-label">Phone</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Phone
+        </span>
         <span class="contact-value"><a href="tel:+919450174288">+91 94501 74288</a></span>
       </div>
       <div class="contact-item fade-in">
-        <span class="contact-label">Email</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+          Email
+        </span>
         <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
       </div>
     </div>
     <div>
       <div class="contact-item fade-in" style="margin-bottom:2rem">
-        <span class="contact-label">LinkedIn</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </span>
         <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">linkedin.com/in/cavasugupta</a></span>
       </div>
       <div class="contact-item fade-in">
-        <span class="contact-label">Office Address</span>
+        <span class="contact-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:5px;opacity:0.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Office Address
+        </span>
         <span class="contact-value" style="font-size:1rem;line-height:1.6">H-1106 Shalimar Gallant,<br>Mahanagar, Lucknow<br>Uttar Pradesh &mdash; 226006, India</span>
       </div>
     </div>
