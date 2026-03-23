@@ -96,8 +96,8 @@
 
   /* HERO */
   .hero {
-    min-height: 85vh; display: flex; align-items: center;
-    padding: 100px 8% 80px;
+    min-height: 60vh; display: flex; align-items: center;
+    padding: 70px 8% 50px;
   }
   .hero-content { max-width: 680px; }
   .hero-eyebrow {
@@ -114,7 +114,7 @@
   }
   .hero-sub {
     font-size: 1.05rem; color: var(--text-muted);
-    max-width: 480px; margin-bottom: 2.5rem; font-weight: 300;
+    max-width: 480px; margin-bottom: 1.75rem; font-weight: 300;
   }
   .hero-cta {
     display: inline-flex; align-items: center; gap: 0.75rem;
@@ -128,7 +128,7 @@
   .hero-cta:hover svg { transform: translateX(3px); }
 
   /* SHARED SECTION */
-  section { padding: 100px 8%; }
+  section { padding: 60px 8%; }
   .section-label {
     font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
     color: var(--orange); font-weight: 500; margin-bottom: 0.75rem;
@@ -138,14 +138,14 @@
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 1.5rem;
+    font-weight: 300; color: var(--navy); line-height: 1.2; margin-bottom: 1rem;
   }
 
   /* SERVICES */
   #services { background: #fff; }
   .services-intro {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: end; margin-bottom: 4rem;
+    gap: 2.5rem; align-items: end; margin-bottom: 2.5rem;
   }
   .services-intro p { font-size: 1rem; color: var(--text-muted); font-weight: 300; max-width: 400px; }
 
@@ -157,7 +157,7 @@
   @media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
 
   .service-card {
-    padding: 2.5rem 2rem; min-height: 300px;
+    padding: 1.75rem 1.5rem; min-height: 220px;
     display: flex; flex-direction: column; justify-content: flex-end;
     position: relative; transition: transform 0.3s;
   }
@@ -187,7 +187,7 @@
 
   /* ABOUT */
   #about { background: var(--cream); }
-  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
   .about-visual {
     aspect-ratio: 4/5; max-height: 560px; border-radius: 2px;
     position: relative; overflow: hidden;
@@ -207,8 +207,8 @@
   .disclaimer-box p { font-size: 0.8rem; color: #777; line-height: 1.75; margin: 0; }
 
   /* INDUSTRIES */
-  #industries { background: var(--cream); padding: 80px 8%; }
-  .industries-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem; }
+  #industries { background: var(--cream); padding: 50px 8%; }
+  .industries-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
   .industry-tag {
     font-size: 0.78rem; letter-spacing: 0.06em; font-weight: 400; color: var(--navy);
     border: 1px solid var(--border); padding: 0.45rem 1rem; border-radius: 1px; background: #fff;
@@ -442,7 +442,7 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
           Email
         </span>
-        <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
+        <span class="contact-value"><a href="/cdn-cgi/l/email-protection#711210071002041604010510310810191e1e5f121e1c"><span class="__cf_email__" data-cfemail="6c0f0d1a0d1f190b191c180d2c150d040303420f0301">[email&#160;protected]</span></a></span>
       </div>
       <div class="contact-item">
         <span class="contact-label">
@@ -469,15 +469,8 @@
   </div>
 </section>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleMobileMenu() {
     const nav = document.querySelector('.nav-links');
     const open = nav.style.display === 'flex';
-    nav.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(250,248,245,0.98);padding:1.5rem 8%;gap:1.25rem;border-bottom:1px solid rgba(29,81,137,0.12);z-index:99;';
-  }
-  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => {
-    if (window.innerWidth < 768) document.querySelector('.nav-links').style.cssText = '';
-  }));
-</script>
-</body>
-</html>
+    nav.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(250,248,245,0.98);padding:1.5rem 8%;gap:1.25rem;border-bottom:1px solid rgba(29,
