@@ -29,7 +29,6 @@
     overflow-x: hidden;
   }
 
-  /* CSS-only entrance animations — no JS required */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(22px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -74,7 +73,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: rgba(250, 248, 245, 0.97); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    padding: 0 4%; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 8%; display: flex; align-items: center; justify-content: space-between;
     height: 72px;
   }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
@@ -94,12 +93,44 @@
   .nav-links a:hover::after { transform: scaleX(1); }
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 
+  /* Mobile nav drawer */
+  .mobile-nav-drawer {
+    display: none;
+    position: fixed; top: 72px; left: 0; right: 0; z-index: 99;
+    background: rgba(250,248,245,0.98);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 8%;
+    flex-direction: column;
+    gap: 1.25rem;
+    animation: fadeUp 0.2s ease;
+  }
+  .mobile-nav-drawer.open { display: flex; }
+  .mobile-nav-drawer a {
+    text-decoration: none; color: var(--text); font-size: 0.9rem;
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500;
+    padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-drawer a:last-child { border-bottom: none; }
+
   /* HERO */
   .hero {
     min-height: 60vh; display: flex; align-items: center;
-    padding: 70px 8% 50px;
+    padding: 100px 8% 60px;
   }
-  .hero-content { max-width: 680px; }
+  .hero-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 40px; flex-wrap: wrap; width: 100%;
+  }
+  .hero-content { max-width: 580px; flex: 1; min-width: 280px; }
+  .hero-photo {
+    flex: 1; min-width: 260px; max-width: 360px;
+  }
+  .hero-photo img {
+    width: 100%; height: auto;
+    border-radius: 4px; object-fit: cover;
+    box-shadow: 0 20px 60px rgba(29,81,137,0.15);
+    display: block;
+  }
   .hero-eyebrow {
     font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--orange); font-weight: 500; margin-bottom: 1.25rem;
@@ -145,7 +176,7 @@
   #services { background: #fff; }
   .services-intro {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2.5rem; align-items: end; margin-bottom: 2.5rem;
+    gap: 2.5rem; align-items: center  ; margin-bottom: 2.5rem;
   }
   .services-intro p { font-size: 1rem; color: var(--text-muted); font-weight: 300; max-width: 400px; }
 
@@ -161,7 +192,7 @@
     display: flex; flex-direction: column; justify-content: flex-end;
     position: relative; transition: transform 0.3s;
   }
-  .service-card:hover { transform: translateY(-2px); }
+  .service-card:hover { transform: none; }
   .service-card::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--orange), var(--green));
@@ -176,45 +207,78 @@
     font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
     font-weight: 600; color: #fff; margin-bottom: 0.5rem;
   }
-  .service-card p { font-size: 0.875rem; color: rgba(255,255,255,0.82); font-weight: 300; line-height: 1.65; }
-
-  .sc-1 { background: linear-gradient(145deg, #4a7fb5, #2d6099); }
-  .sc-2 { background: linear-gradient(145deg, #3d7a5e, #4e9b73); }
-  .sc-3 { background: linear-gradient(145deg, #2e6e8e, #1e5570); }
-  .sc-4 { background: linear-gradient(145deg, #5588b8, #3a6fa0); }
-  .sc-5 { background: linear-gradient(145deg, #3d9464, #52b87e); }
-  .sc-6 { background: linear-gradient(145deg, #b07040, #c98848); }
-
-  /* ABOUT */
-  #about { background: var(--cream); }
-  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
-  .about-visual {
-    aspect-ratio: 4/5; max-height: 560px; border-radius: 2px;
-    position: relative; overflow: hidden;
-    box-shadow: 0 20px 60px rgba(29,81,137,0.15);
+  /* SKY BLUE TINTED SERVICE CARDS */
+  .service-card {
+    background: #1D5189; /* Navy blue matching site palette */
+    padding: 2.25rem 2rem;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
   }
-  .about-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  .about-visual::after {
-    content: ''; position: absolute; inset: -12px;
-    border: 1px solid var(--border); border-radius: 2px; pointer-events: none;
+
+  .service-card:hover {
+    background: #1D5189; /* No emboss — stays the same */
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.08);
   }
-  .about-text p { font-size: 0.95rem; color: #555; line-height: 1.85; font-weight: 300; margin-bottom: 1rem; }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card p {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  /* sc-1 through sc-6 inherit navy background from .service-card */
+  /* ABOUT & SECTORS LAYOUT */
+  #about { background: var(--cream); border-top: 1px solid var(--border); }
+  .about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 5rem; align-items: start; }
+  
+  .sectors-sidebar { display: flex; flex-direction: column; gap: 1.25rem; }
+  .sectors-list { display: flex; flex-direction: column; gap: 0.35rem; }
+  .sector-item {
+    font-size: 0.88rem; 
+    color: var(--navy); 
+    font-weight: 500;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .sector-item::after { content: '→'; opacity: 0.3; font-size: 0.7rem; }
+
+  .about-text { display: flex; flex-direction: column; gap: 1.25rem; }
+  .about-text p { font-size: 0.95rem; color: #555; line-height: 1.85; font-weight: 300; margin-bottom: 0; }
+  
   .disclaimer-box {
     margin-top: 2rem; padding: 1.5rem;
     border-left: 3px solid var(--orange); background: rgba(232,119,34,0.04);
     border-radius: 0 2px 2px 0;
   }
   .disclaimer-box p { font-size: 0.8rem; color: #777; line-height: 1.75; margin: 0; }
-
-  /* INDUSTRIES */
-  #industries { background: var(--cream); padding: 50px 8%; }
-  .industries-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-  .industry-tag {
-    font-size: 0.78rem; letter-spacing: 0.06em; font-weight: 400; color: var(--navy);
-    border: 1px solid var(--border); padding: 0.45rem 1rem; border-radius: 1px; background: #fff;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-  }
-  .industry-tag:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
 
   /* CONTACT */
   #contact { background: var(--navy); color: #fff; }
@@ -242,35 +306,60 @@
     display: flex; align-items: center; justify-content: space-between;
     font-size: 0.78rem; color: rgba(255,255,255,0.35); letter-spacing: 0.05em;
   }
-  .footer-logo { height: 38px; width: auto; filter: brightness(0) invert(1); opacity: 0.85; }
 
   /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .sectors-sidebar { order: 2; }
+    .about-text { order: 1; }
+  }
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .services-intro { grid-template-columns: 1fr; gap: 1.5rem; }
-    .about-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .about-visual { aspect-ratio: 3/4; max-height: 420px; }
+    .hero-photo { max-width: 100%; }
     .contact-merged { grid-template-columns: 1fr; gap: 2.5rem; }
-    .contact-info-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 0.75rem; text-align: center; }
   }
-  @media (max-width: 560px) { .contact-info-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<!-- DISCLAIMER MODAL -->
 <div class="modal-overlay" id="disclaimerModal">
-  <div class="modal">
-    <h2>Important Disclaimer</h2>
-    <p>The rules of the Institute of Chartered Accountants of India prohibit Chartered Accountants firms from advertising and soliciting work in the public domain. This website is solely meant for the purpose of information and not for the purpose of advertising. We do not intend to solicit clients through this website.</p>
-    <p>We do not take the responsibility of any action taken by any person based on the information posted here. By proceeding beyond this point, the visitor acknowledges that the information provided on the website — (a) does not amount to solicitation and advertising, and (b) is meant only for their understanding about our activities and who we are.</p>
-    <button class="modal-btn" onclick="document.getElementById('disclaimerModal').style.display='none'">I Understand &amp; Proceed</button>
+  <div class="modal" style="max-width: 720px; padding: 2.5rem;">
+    <h2 style="text-transform: uppercase; font-size: 1.2rem; letter-spacing: 0.1em; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">Regulatory Disclaimer</h2>
+    
+    <div style="font-size: 0.9rem; color: #444; line-height: 1.8; margin: 1.5rem 0;">
+      <p style="margin-bottom: 1rem;">
+        The rules of Institute of Chartered Accountants of India prohibit Chartered Accountants firm from advertising and soliciting work in the public domain. This website is solely meant for the purpose of information and not for the purpose of advertising.
+      </p>
+      
+      <p style="margin-bottom: 1rem;">
+        Seth & Associates does not intend to solicit clients through this website. We do not take the responsibility of any action taken by any person based on the information posted here.
+      </p>
+      
+      <p style="font-weight: 500; color: var(--navy); margin-bottom: 0.5rem;">
+        By proceeding beyond this point the visitor acknowledges that the information provided on the website:
+      </p>
+      
+      <ul style="list-style: none; padding-left: 0;">
+        <li style="margin-bottom: 0.5rem; display: flex; gap: 10px;">
+          <span style="color: var(--orange);">a)</span> 
+          <span>Does not amount to solicitation and advertising AND</span>
+        </li>
+        <li style="display: flex; gap: 10px;">
+          <span style="color: var(--orange);">b)</span> 
+          <span>Is meant only for their understanding about our activities and who we are.</span>
+        </li>
+      </ul>
+    </div>
+
+    <button class="modal-btn" onclick="document.getElementById('disclaimerModal').style.display='none'">
+      I Acknowledge & Proceed
+    </button>
   </div>
 </div>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
     <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/CA_India_Logo.png" alt="CA India Logo">
@@ -278,10 +367,9 @@
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#industries">Industries</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="menu-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+  <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
     <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
       <rect width="22" height="2" rx="1" fill="#1D5189"/>
       <rect y="7" width="16" height="2" rx="1" fill="#1D5189"/>
@@ -290,187 +378,112 @@
   </button>
 </nav>
 
-<!-- HERO -->
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
 <section class="hero" id="home">
-  <div style="display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;">
-    
+  <div class="hero-inner">
     <div class="hero-content">
-    <div class="hero-eyebrow anim d1">Chartered Accountant</div>
-    <h1 class="anim d2">CA Vasu<br>Gupta</h1>
-    <p class="hero-sub anim d3">Vasu Gupta and Company &mdash; bringing clarity, integrity, and expert financial counsel to businesses and individuals.</p>
-    <a href="#contact" class="hero-cta anim d4">
-      Get in Touch
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
+      <div class="hero-eyebrow anim d1">Chartered Accountant</div>
+      <h1 class="anim d2">CA Vasu<br>Gupta</h1>
+      <p class="hero-sub anim d3">Vasu Gupta and Company — bringing clarity, integrity, and expert financial counsel to businesses and individuals.</p>
+      <a href="#contact" class="hero-cta anim d4">Get in Touch</a>
+    </div>
+    <div class="hero-photo anim d3">
+      <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/DSC_6633.JPG" alt="CA Vasu Gupta">
+    </div>
   </div>
-  <div style="flex:1; min-width:280px; max-width:380px;">
-  <img src="https://raw.githubusercontent.com/contactme-vasu/cavasugupta.github.io/main/assets/DSC_6633.JPG"
-       alt="CA Vasu Gupta"
-       style="width:100%; height:auto; border-radius:6px; object-fit:cover;">
-</div>
-</div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="services-intro">
     <div>
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Services<br><em style="font-style:italic;font-family:'Cormorant Garamond',serif">We Offer</em></h2>
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Professional Services</h2>
     </div>
-    <p>From audit to advisory, we integrate deep functional expertise with practical execution to help clients build lasting capability and performance.</p>
+    <p>From audit to advisory, we integrate deep functional expertise with practical execution to help clients build lasting capability.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card sc-1">
-      <div class="service-num">01</div>
-      <h3>Audit &amp; Assurance</h3>
-      <p>In-depth review of systems, procedures, and controls. Ensuring compliance, detecting income leakages, and reporting inefficiencies at every operational level.</p>
-    </div>
-    <div class="service-card sc-2">
-      <div class="service-num">02</div>
-      <h3>Taxation</h3>
-      <p>Expert advice on Direct &amp; Indirect Tax for individuals, corporates, and other entities. Tax audit, representation before authorities, and complex corporate tax solutions.</p>
-    </div>
-    <div class="service-card sc-3">
-      <div class="service-num">03</div>
-      <h3>Forensic &amp; Fraud Detection</h3>
-      <p>Assignments conducted with integrity by a team certified by ICAI in forensic and fraud detection. A holistic approach to identifying and mitigating risk-prone areas.</p>
-    </div>
-    <div class="service-card sc-4">
-      <div class="service-num">04</div>
-      <h3>Financial Advisory</h3>
-      <p>Cash flow planning, operational audits, break-even analysis, valuations, forecasts, and identifying financing alternatives to support informed business decisions.</p>
-    </div>
-    <div class="service-card sc-5">
-    <div class="service-num">05</div>
-    <h3>Regulatory & Certification Services</h3>
-    <p>
-      12A & 80G Registration, NGO DARPAN Registration, ROC Filing, TDS Filing, GSTR-9C Certification, Net Worth Certification, Project Reports, Provisional Financial Statements, VAT Assessment, and Voluntary Audit.
-    </p>
-  </div>
-    <div class="service-card sc-6">
-    <div class="service-num">06</div>
-    <h3>Bank Finance & Govt. Schemes</h3>
-    <p>
-      Helping businesses access the right financing at the right time, and keeping clients informed of relevant government-funded schemes and subsidies.
-    </p>
-  </div>
+    <div class="service-card sc-1"><div class="service-num">01</div><h3>Audit & Assurance</h3><p>In-depth review of systems and controls to ensure compliance and detect inefficiencies.</p></div>
+    <div class="service-card sc-2"><div class="service-num">02</div><h3>Taxation</h3><p>Expert advice on Direct & Indirect Tax for individuals and corporates including representation.</p></div>
+    <div class="service-card sc-3"><div class="service-num">03</div><h3>Forensic Audit</h3><p>Specialized fraud detection assignments conducted with technical precision and integrity.</p></div>
+    <div class="service-card sc-4"><div class="service-num">04</div><h3>Financial Advisory</h3><p>Cash flow planning, break-even analysis, and identifying financing alternatives.</p></div>
+    <div class="service-card sc-5"><div class="service-num">05</div><h3>Regulatory</h3><p>ROC Filings, GST Certifications, NGO registrations (12A/80G), and Project Reports.</p></div>
+    <div class="service-card sc-6"><div class="service-num">06</div><h3>Bank Finance</h3><p>Facilitating business financing and advising on Government-funded schemes and subsidies.</p></div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-layout">
-    <div class="about-visual" style="
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:30px;
-  background:#fff;
-  border:1px solid rgba(29,81,137,0.08);
-  aspect-ratio:auto;
-  max-height:none;
-  overflow:visible;
-">
-
-  <h3 style="font-family:'Cormorant Garamond',serif; color:#1D5189; margin-bottom:15px;">
-    Professional Profile
-  </h3>
-
-  <p style="font-size:0.9rem; color:#555; line-height:1.8;">
-    Member of the Institute of Chartered Accountants of India (ICAI)
-  </p>
-
-  <p style="font-size:0.9rem; color:#555; line-height:1.8;">
-    Practicing Chartered Accountant based in Lucknow, India
-  </p>
-
-  <p style="font-size:0.9rem; color:#555; line-height:1.8;">
-    Firm: Vasu Gupta & Company
-  </p>
-
-</div>
-    <div class="about-text">
-      <div class="section-label">About</div>
-      <h2 class="section-title">Vasu Gupta &amp; Company</h2>
-      <p>We are a Chartered Accountancy firm committed to delivering professional, ethical, and personalised financial services. Founded on the principles of integrity and technical excellence, we serve clients across diverse sectors with precision and care.</p>
-      <p>As members of the Institute of Chartered Accountants of India (ICAI), we uphold the highest standards of professional conduct in every engagement.</p>
-      <div class="disclaimer-box">
-        <p><strong>Regulatory Notice:</strong> The rules of ICAI prohibit CA firms from advertising and soliciting work in the public domain. This website is solely for information purposes and does not constitute solicitation or advertising.</p>
+    
+    <div class="sectors-sidebar">
+      <div class="section-label">Industries</div>
+      <h2 class="section-title" style="font-size: 2.4rem; line-height: 1.1; white-space: normal;">Sectors serviced by us...</h2>
+      <div class="sectors-list">
+        <div class="sector-item">Textiles & Garments</div>
+        <div class="sector-item">Liquor Trade & Retail</div>
+        <div class="sector-item">Petroleum & Fuel Stations</div>
+        <div class="sector-item">Kirana & FMCG Trading</div>
+        <div class="sector-item">Food & Beverage Services</div>
+        <div class="sector-item">Real Estate</div>
+        <div class="sector-item">Educational Services</div>
+        <div class="sector-item">Non-Profit (NGOs)</div>
       </div>
     </div>
+
+    <div class="about-text">
+      <div class="section-label">Profile</div>
+      <h2 class="section-title">Vasu Gupta & Company</h2>
+      <p>We are a team of dedicated professionals practicing from Lucknow with a core focus on audit, taxation, and forensic accounting. Founded on the principles of technical excellence and ethical practice, we deliver reliable counsel across every engagement.</p>
+      
+      <p><strong>CA Vasu Gupta</strong> leads the firm with extensive experience in navigating complex financial landscapes. In addition to core auditing expertise, he has successfully completed the <strong>Post Qualification Course in Information Systems Audit (ISA)</strong> from the Institute of Chartered Accountants of India (ICAI), enabling the firm to bridge the gap between financial compliance and digital security.</p>
+      
+      <p>As active members of the ICAI, we uphold the highest professional standards, serving a diverse clientele ranging from local retailers to large-scale charitable organizations.</p>
+  
+    </div>
+
   </div>
 </section>
 
-<!-- INDUSTRIES -->
-<section id="industries">
-  <div class="section-label">Sectors</div>
-  <h2 class="section-title">Sectors <em style="font-style:italic;font-family:'Cormorant Garamond',serif">we work with</em></h2>
-  <div class="industries-tags">
-    <span class="industry-tag">Textiles & Garments</span>
-    <span class="industry-tag">Liquor Trade & Retail</span>
-    <span class="industry-tag">Petroleum & Fuel Stations</span>
-    <span class="industry-tag">Kirana & FMCG Trading</span>
-    <span class="industry-tag">Food & Beverage Services</span>
-    <span class="industry-tag">Hospitality Services</span>
-    <span class="industry-tag">Real Estate</span>
-    <span class="industry-tag">Financial Market Participants</span>
-    <span class="industry-tag">Educational Services</span>
-    <span class="industry-tag">Charitable & Non-Profit Organisations</span>
-    <span class="industry-tag">High Net Worth Individuals</span>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
+<section id="contact" style="padding: 40px 8%;">
   <div class="section-label">Get In Touch</div>
-  <h2 class="section-title">Contact Us</h2>
-  <hr class="contact-divider">
-  <div class="contact-merged">
-    <div class="contact-info-grid">
+  <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 1.5rem;">Contact Information</h2>
+  
+  <div class="contact-merged" style="grid-template-columns: 1fr; gap: 2rem;">
+    <div class="contact-info-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1.25rem 1.25rem;">
+      
       <div class="contact-item">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.57 3.37 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.72A16 16 0 0 0 15.28 16l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Phone
-        </span>
+        <span class="contact-label">Phone</span>
         <span class="contact-value"><a href="tel:+919450174288">+91 94501 74288</a></span>
       </div>
+
       <div class="contact-item">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-          Email
-        </span>
-        <span class="contact-value"><a href="mailto:cavasugupta@yahoo.com">cavasugupta@yahoo.com</a></span>
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="/cdn-cgi/l/email-protection#d5b6b4a3b4a6a0b2a0a5a1b495acb4bdbabafbb6bab8"><span class="__cf_email__" data-cfemail="5b383a2d3a282e3c2e2b2f3a1b223a33343475383436">[email&#160;protected]</span></a></span>
       </div>
+
       <div class="contact-item">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </span>
-        <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">linkedin.com/in/cavasugupta</a></span>
+        <span class="contact-label">Social</span>
+        <span class="contact-value"><a href="https://www.linkedin.com/in/cavasugupta" target="_blank" rel="noopener">LinkedIn ↗</a></span>
       </div>
+
       <div class="contact-item">
-        <span class="contact-label">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Office Address
+        <span class="contact-label">Office Address</span>
+        <span class="contact-value" style="font-size:1rem; line-height: 1.5;">
+          H-1106, Shalimar Gallant, Mahanagar,<br>Lucknow, UP — 226006
         </span>
-        <span class="contact-value" style="font-size:1rem;line-height:1.65">H-1106, Shalimar Gallant,<br>Mahanagar, Lucknow,<br>Uttar Pradesh &mdash; 226006, India</span>
+        <a href="https://share.google/au1FzJ4DwP3cnGoqE" 
+           target="_blank" 
+           style="color: var(--orange); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; margin-top: 5px; font-weight: 500;">
+           → View on Google Maps
+        </a>
       </div>
-    </div>
-    <div class="contact-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.5234456!2d80.94619!3d26.87419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd46b73e4c67%3A0xd58b7c3e2f8b1a9d!2sShalimar+Gallant%2C+Mahanagar%2C+Lucknow%2C+Uttar+Pradesh+226006!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        title="Office Location — Mahanagar, Lucknow">
-      </iframe>
+
     </div>
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function toggleMobileMenu() {
-    const nav = document.querySelector('.nav-links');
-    const open = nav.style.display === 'flex';
-    nav.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:fixed;top:72px;left:0;right:0;background:rgba(250,248,245,0.98);padding:1.5rem 8%;gap:1.25rem;border-bottom:1px solid rgba(29,
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><scr
