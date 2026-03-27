@@ -122,9 +122,7 @@
     gap: 40px; flex-wrap: wrap; width: 100%;
   }
   .hero-content { max-width: 580px; flex: 1; min-width: 280px; }
-  .hero-photo {
-    flex: 1; min-width: 260px; max-width: 360px;
-  }
+  .hero-photo { flex: 1; min-width: 260px; max-width: 360px; }
   .hero-photo img {
     width: 100%; height: auto;
     border-radius: 4px; object-fit: cover;
@@ -176,7 +174,7 @@
   #services { background: #fff; }
   .services-intro {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2.5rem; align-items: center  ; margin-bottom: 2.5rem;
+    gap: 2.5rem; align-items: center; margin-bottom: 2.5rem;
   }
   .services-intro p { font-size: 1rem; color: var(--text-muted); font-weight: 300; max-width: 400px; }
 
@@ -188,28 +186,7 @@
   @media (max-width: 600px)  { .services-grid { grid-template-columns: 1fr; } }
 
   .service-card {
-    padding: 1.75rem 1.5rem; min-height: 220px;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    position: relative; transition: transform 0.3s;
-  }
-  .service-card:hover { transform: none; }
-  .service-card::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--orange), var(--green));
-    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
-  }
-  .service-card:hover::after { transform: scaleX(1); }
-  .service-num {
-    font-family: 'Cormorant Garamond', serif; font-size: 3rem;
-    font-weight: 300; color: rgba(255,255,255,0.28); line-height: 1; margin-bottom: 1rem;
-  }
-  .service-card h3 {
-    font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
-    font-weight: 600; color: #fff; margin-bottom: 0.5rem;
-  }
-  /* SKY BLUE TINTED SERVICE CARDS */
-  .service-card {
-    background: #1D5189; /* Navy blue matching site palette */
+    background: #1D5189;
     padding: 2.25rem 2rem;
     min-height: 250px;
     display: flex;
@@ -220,14 +197,18 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 4px;
   }
-
   .service-card:hover {
-    background: #1D5189; /* No emboss — stays the same */
+    background: #1D5189;
     transform: none;
     box-shadow: none;
     border-color: rgba(255, 255, 255, 0.08);
   }
-
+  .service-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--green));
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+  .service-card:hover::after { transform: scaleX(1); }
   .service-num {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
@@ -236,7 +217,6 @@
     line-height: 1;
     margin-bottom: 1.25rem;
   }
-
   .service-card h3 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.45rem;
@@ -244,7 +224,6 @@
     color: #fff;
     margin-bottom: 0.75rem;
   }
-
   .service-card p {
     font-size: 0.92rem;
     color: rgba(255, 255, 255, 0.72);
@@ -252,7 +231,6 @@
     line-height: 1.7;
   }
 
-  /* sc-1 through sc-6 inherit navy background from .service-card */
   /* ABOUT & SECTORS LAYOUT */
   #about { background: var(--cream); border-top: 1px solid var(--border); }
   .about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 5rem; align-items: start; }
@@ -412,7 +390,7 @@
     <div class="service-card sc-3"><div class="service-num">03</div><h3>Forensic Audit</h3><p>Specialized fraud detection assignments conducted with technical precision and integrity.</p></div>
     <div class="service-card sc-4"><div class="service-num">04</div><h3>Financial Advisory</h3><p>Cash flow planning, break-even analysis, and identifying financing alternatives.</p></div>
     <div class="service-card sc-5"><div class="service-num">05</div><h3>Regulatory</h3><p>ROC Filings, GST Certifications, NGO registrations (12A/80G), and Project Reports.</p></div>
-    <div class="service-card sc-6"><div class="service-num">06</div><h3>Bank Finance</h3><p>Facilitating business financing and advising on Government-funded schemes and subsidies.</p></div>
+    <div class="service-card sc-6"><div class="service-num">06</div><h3>US Outsourcing</h3><p>Monthly bookkeeping, sales & purchase ledger management, bank reconciliation, expense coding, and month-end close services for US clients.</p></div>
   </div>
 </section>
 
@@ -486,4 +464,14 @@
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><scr
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+function toggleMobileMenu() {
+  document.getElementById('mobileNavDrawer').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileNavDrawer').classList.remove('open');
+}
+</script>
+</body>
+</html>
