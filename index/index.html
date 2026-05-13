@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Index Funds Analysis</title>
+    <link rel="icon" type="image/png" href="assets/ca-india-logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../">
+        <img src="assets/ca-india-logo.png" alt="CA India logo">
+        <span class="brand-text">
+          <strong>CA Vasu Gupta</strong>
+          <span>Chartered Accountant</span>
+        </span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="../#profile">Profile</a>
+        <a href="../#services">Services</a>
+        <a href="../#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div>
+          <p>Capital Markets</p>
+          <h1>Index Funds Analysis</h1>
+        </div>
+        <span>Information and discussion only. Names shown are data references, not client names, endorsements, or recommendations.</span>
+      </section>
+
+      <section class="toolbar" aria-label="Report controls">
+        <div class="tabs" id="periodTabs"></div>
+        <div class="metadata-grid" id="reportMeta"></div>
+        <label class="search-label">
+          <input id="searchInput" type="search" placeholder="Search index or AMC">
+        </label>
+        <label class="checkbox-label">
+          <input id="amcOnlyInput" type="checkbox">
+          <span>AMCs available</span>
+        </label>
+      </section>
+
+      <section class="metadata-panel" aria-label="Report metadata">
+        <div class="sources">
+          <h2>Sources</h2>
+          <ul id="sourceList"></ul>
+        </div>
+      </section>
+
+      <section class="summary-grid" id="summaryGrid"></section>
+
+      <section class="table-section">
+        <details class="column-guide">
+          <summary>Column guide</summary>
+          <dl>
+            <div>
+              <dt>CAGR</dt>
+              <dd>Compound annual growth rate: the average yearly return over the full available period, assuming gains are reinvested.</dd>
+            </div>
+            <div>
+              <dt>Std Dev</dt>
+              <dd>Standard deviation: a measure of how much returns moved up and down. Higher values usually mean a bumpier ride.</dd>
+            </div>
+            <div>
+              <dt>Years of Data</dt>
+              <dd>Number of years of index data available in the workbook for the selected analysis period.</dd>
+            </div>
+            <div>
+              <dt>Avg Rolling</dt>
+              <dd>Average rolling return: the average of all rolling period returns, such as all 3-year or 5-year return windows.</dd>
+            </div>
+            <div>
+              <dt>Top Q</dt>
+              <dd>Upper quartile count: how many rolling periods this index appeared in the upper 25 percent of the dataset.</dd>
+            </div>
+            <div>
+              <dt>Top/Bottom</dt>
+              <dd>Compares upper-quartile observations with lower-quartile observations.</dd>
+            </div>
+            <div>
+              <dt>Bottom Q</dt>
+              <dd>Lower quartile count: how many rolling periods this index appeared in the lower 25 percent of the dataset.</dd>
+            </div>
+            <div>
+              <dt>AMCs</dt>
+              <dd>Asset management companies that appear to offer index funds tracking this index.</dd>
+            </div>
+          </dl>
+        </details>
+        <div class="section-heading">
+          <h2>Analysis Table</h2>
+          <span id="rowCount"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-sort="indexName">Index Name</th>
+                <th data-sort="cagr">CAGR</th>
+                <th data-sort="stdDev">Std Dev</th>
+                <th data-sort="yearsOfData">Years of Data</th>
+                <th data-sort="averageRollingReturn">Avg Rolling</th>
+                <th data-sort="topQuartileCount">Upper Q</th>
+                <th data-sort="bottomQuartileCount">Lower Q</th>
+                <th data-sort="topBottomRatio">Upper/Lower</th>
+                <th data-sort="amcText">AMCs</th>
+                <th data-sort="sourceUrl">Source</th>
+              </tr>
+            </thead>
+            <tbody id="rankingBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span id="updatedAt"></span>
+      <span>CA Vasu Gupta. Information only. Data names are references, not clients, endorsements, or recommendations.</span>
+    </footer>
+
+    <script src="app.js?v=20260508-1"></script>
+  </body>
+</html>
